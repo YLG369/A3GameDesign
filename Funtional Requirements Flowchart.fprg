@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="User Interaction Flowchart"/>
+        <attribute name="authors" value="yiche"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-11-07 07:46:57 AM"/>
+        <attribute name="created" value="eWljaGU7REVTS1RPUC1LMEFCVVZLOzIwMjQtMTEtMDY7MDY6MjQ6MTggUE07Mjg5NA=="/>
+        <attribute name="edited" value="eWljaGU7REVTS1RPUC1LMEFCVVZLOzIwMjQtMTEtMDc7MDc6NDY6NTcgQU07ODszMDAz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body/>
+    </function>
+    <function name="Checkpoint" type="None" variable="">
+        <parameters/>
+        <body>
+            <assign variable="NextCheckpoint" expression="False"/>
+            <while expression="(&quot;Player != LastCheckpoint AND NextCheckpoint != LastCheckpoint&quot;)">
+                <while expression="(&quot;Player != NextCheckpoint&quot;)">
+                    <output expression="(&quot;Player respawn = Last activated Checkpoint&quot;)" newline="True"/>
+                </while>
+            </while>
+            <assign variable="NextCheckpoint" expression="True"/>
+            <output expression="(&quot;Send user to splash screen&quot;)" newline="True"/>
+        </body>
+    </function>
+    <function name="Movement" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="userInput"/>
+            <if expression="(&quot;'A' key OR left key pressed&quot;)">
+                <then>
+                    <output expression="(&quot;Move player left&quot;)" newline="True"/>
+                </then>
+                <else>
+                    <if expression="(&quot;'D' key OR right key pressed&quot;)">
+                        <then>
+                            <output expression="(&quot;Move player right&quot;)" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="(&quot;'SPACE' key OR 'W' key OR up key pressed&quot;)">
+                                <then>
+                                    <if expression="(&quot;player touching ground&quot;)">
+                                        <then>
+                                            <output expression="(&quot;Player jumps&quot;)" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <output expression="(&quot;No effect&quot;)" newline="True"/>
+                                        </else>
+                                    </if>
+                                </then>
+                                <else>
+                                    <output expression="(&quot;No effect&quot;)" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="UserInteraction" type="None" variable="">
+        <parameters/>
+        <body>
+            <input variable="UserInput"/>
+            <if expression="if (&quot;left-click&quot;) == (&quot;New Game&quot;)">
+                <then>
+                    <output expression="(&quot;Start a new game&quot;)" newline="True"/>
+                </then>
+                <else>
+                    <if expression="if (&quot;left-click&quot;) == (&quot;Quit&quot;)">
+                        <then>
+                            <output expression="(&quot;End program&quot;)" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="(&quot;No effect&quot;)" newline="True"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
